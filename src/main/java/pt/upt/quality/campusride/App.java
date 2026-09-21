@@ -25,5 +25,7 @@ public class App {
         rentalService.rentVehicle("B1");
         System.out.println("B1 available after rent = " + fleet.findById("B1").isAvailable());
         rentalService.returnVehicle("B1");
+
+        System.out.println("Available vehicles = " + report.availableVehicleIds());
     }
 }
