@@ -24,8 +24,16 @@ public class Scooter extends Vehicle implements Electric {
 
     @Override
     public double calculatePrice(int minutes) {
-        validateMinutes(minutes);
-        return 1.00 + minutes * 0.15;
+        if (minutes < 0) {
+            throw new IllegalArgumentException("Minutes cannot be negative");
+        }
+        double price = 1.00;
+        if (minutes <= 30) {
+            price += minutes * 0.15;
+        } else {
+            price += (30 * 0.15) + ((minutes - 30) * 0.20);
+        }
+        return price;
     }
 
     private void validateBattery(int batteryLevel) {
